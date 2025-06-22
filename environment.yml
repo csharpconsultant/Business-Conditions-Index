@@ -1,0 +1,10 @@
+name: bci_env
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - streamlit
+  - pandas
+  - numpy
+  - scikit-learn
+  - altair
