@@ -46,7 +46,7 @@ Ensure these files are in your working directory (or generate them using `statio
 ### 3. Launch the app
 
 ```bash
-streamlit run bci_app.py
+streamlit run bci.py
 ```
 
 ---
@@ -55,7 +55,7 @@ streamlit run bci_app.py
 
 ```
 .
-├── bci_app.py                  # Main Streamlit app
+├── bci.py                  # Main Streamlit app
 ├── stationarize_fred_qd.py     # Data transformation utility
 ├── fred_qd_cached.csv          # Transformed macroeconomic data
 ├── fred_qd_transformation.csv  # Variable transformation mapping
@@ -129,4 +129,4 @@ Special thanks to:
 ## 🔗 Connect
 
 Created by Tony Vuolo 
-Let’s connect on [LinkedIn](https://www.linkedin.com](https://www.linkedin.com/in/tonyvuolo/)
+Let’s connect on [LinkedIn](https://www.linkedin.com/in/tonyvuolo/)
