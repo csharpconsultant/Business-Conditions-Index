@@ -1,7 +1,6 @@
 
 # 📈 Business Conditions Index (BCI) using FRED-QD Data
 
-![Conda Environment](https://img.shields.io/badge/environment-conda-blue)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 ![Streamlit App](https://img.shields.io/badge/app-live-brightgreen)
 
