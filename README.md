@@ -12,31 +12,38 @@ This project computes a **Business Conditions Index (BCI)** for the U.S. economy
 
 ## 🧠 Methodology: PCA and Business Cycle Tracking
 
-This index uses **Principal Component Analysis (PCA)** to extract a common factor from a panel of macroeconomic indicators — a technique rooted in econometrics and commonly used in empirical macroeconomic research.
+This index is constructed using **Principal Component Analysis (PCA)** to extract a latent common factor from a panel of standardized macroeconomic indicators. PCA is a core technique in empirical macroeconomics and econometrics, particularly for summarizing co-movements in large datasets.
 
-### 📐 Mathematical Framework
+## 📐 Mathematical Framework
 
-Let **X** be a matrix of standardized, stationary macroeconomic variables:
+Let **X** be a matrix of *T* time periods (rows) and *N* standardized, stationary macroeconomic variables (columns), such as:
 
-- Each column is a variable (e.g. GDP, CPI, unemployment)
-- Each row is a time period (quarter)
+- Real GDP growth  
+- Unemployment rate  
+- CPI inflation  
+- Industrial production  
+- Retail sales  
 
 We compute a linear combination:
 
 ```
-z = X·w
+z = X · w
 ```
 
-that maximizes the variance of `z`, subject to the constraint:
+where:
+
+- **z** is the latent factor (the index)  
+- **w** is a vector of weights assigned to each variable
+
+The objective is to find **w** such that the variance of **z** is maximized, subject to the constraint that **w** has unit length:
 
 ```
-maximize Var(X·w)
+maximize Var(X · w)  
 subject to ‖w‖ = 1
 ```
 
-This gives a **single latent factor**, the first principal component, that captures the **largest common variation** across all included economic series.
+The resulting **z** is the **first principal component** — the direction in variable space along which the data vary most. It captures the largest common signal across the economic indicators and serves as a composite measure of current business conditions.
 
----
 
 ### 🔁 Data Transformations
 
