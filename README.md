@@ -42,7 +42,7 @@ This app runs on [Streamlit Community Cloud](https://streamlit.io/cloud).
 3. Select:
    - Repository: `csharpconsultant/business-conditions-index`
    - Branch: `main`
-   - File: `bci_app.py`
+   - File: `bci.py`
 4. Streamlit will automatically detect the `environment.yml` and install dependencies.
 
 ### 💻 Option 2: Run locally
@@ -54,7 +54,7 @@ git clone https://github.com/csharpconsultant/business-conditions-index.git
 cd business-conditions-index
 conda env create -f environment.yml
 conda activate bci_env
-streamlit run bci_app.py
+streamlit run bci.py
 
 ### 2. Prepare your data
 
