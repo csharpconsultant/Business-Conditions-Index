@@ -34,7 +34,7 @@ maximize Var(X·w)
 subject to ‖w‖ = 1
 ```
 
-This gives a **single latent factor** — the first principal component — that captures the **largest common variation** across all included economic series.
+This gives a **single latent factor**, the first principal component, that captures the **largest common variation** across all included economic series.
 
 ---
 
@@ -151,7 +151,7 @@ Managed via `environment.yml`. Key packages include:
 
 ## 📜 License
 
-MIT License — use, modify, and share freely.
+MIT License; use, modify, and share freely.
 
 ---
 
