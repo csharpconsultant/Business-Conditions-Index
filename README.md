@@ -10,11 +10,62 @@ This project computes a **Business Conditions Index (BCI)** for the U.S. economy
 
 ---
 
-## 🔍 Overview
+## 🧠 Methodology: PCA and Business Cycle Tracking
 
-- **Goal:** Summarize broad U.S. economic conditions into a single index  
-- **Method:** First principal component of selected FRED-QD indicators  
-- **Framework:** Built with `Streamlit`, `scikit-learn`, `Altair`, and `pandas`
+This index uses **Principal Component Analysis (PCA)** to extract a common factor from a panel of macroeconomic indicators — a technique rooted in econometrics and commonly used in empirical macroeconomic research.
+
+### 📐 Mathematical Framework
+
+Let **X** be a matrix of standardized, stationary macroeconomic variables:
+
+- Each column is a variable (e.g. GDP, CPI, unemployment)
+- Each row is a time period (quarter)
+
+We compute a linear combination:
+
+```
+z = X·w
+```
+
+that maximizes the variance of `z`, subject to the constraint:
+
+```
+maximize Var(X·w)
+subject to ‖w‖ = 1
+```
+
+This gives a **single latent factor** — the first principal component — that captures the **largest common variation** across all included economic series.
+
+---
+
+### 🔁 Data Transformations
+
+- All input series are made **stationary** using transformations (e.g. first differences, log-differences)
+- The resulting series are **standardized** to mean 0 and unit variance
+- PCA is applied on the cleaned and standardized matrix
+
+---
+
+### 🔄 Sign Convention
+
+To make the index intuitive:
+- If the PCA output is **negatively correlated** with real GDP (`GDPC1`), we **flip the sign**
+- This ensures that **positive values of the index imply above-average economic activity**, and vice versa
+
+---
+
+### 📈 Interpretation
+
+The resulting **Business Conditions Index (BCI)**:
+- Is centered around 0
+- Moves up during expansions and down during recessions
+- Can be interpreted similarly to the Chicago Fed’s [CFNAI](https://www.chicagofed.org/research/data/cfnai/current-data)
+
+---
+
+### 💡 Academic Background
+
+This technique was taught by **Professor Joshua Chan** (Purdue University) as part of the graduate Machine Learning II course. It is frequently used in empirical macroeconomics to capture the cyclical component of large datasets with a single, interpretable index.
 
 ---
 
@@ -124,62 +175,3 @@ Special thanks to:
 
 Created by Anthony Vuolo  
 Let’s connect on [LinkedIn](https://www.linkedin.com)
-
-
----
-
-## 🧠 Methodology: PCA and Business Cycle Tracking
-
-This index uses **Principal Component Analysis (PCA)** to extract a common factor from a panel of macroeconomic indicators — a technique rooted in econometrics and commonly used in empirical macroeconomic research.
-
-### 📐 Mathematical Framework
-
-Let **X** be a matrix of standardized, stationary macroeconomic variables:
-
-- Each column is a variable (e.g. GDP, CPI, unemployment)
-- Each row is a time period (quarter)
-
-PCA solves for weights **w** such that the first principal component **z**:
-
-\[
-z = Xw
-\]
-
-maximizes the variance:
-
-\[
-\max_w \; \text{Var}(Xw) \quad \text{subject to} \quad \|w\| = 1
-\]
-
-This gives a **single latent factor** — the first principal component — that captures the **largest common variation** across all included economic series.
-
----
-
-### 🔁 Data Transformations
-
-- All input series are made **stationary** using transformations (e.g. first differences, log-differences)
-- The resulting series are **standardized** to mean 0 and unit variance
-- PCA is applied on the cleaned and standardized matrix
-
----
-
-### 🔄 Sign Convention
-
-To make the index intuitive:
-- If the PCA output is **negatively correlated** with real GDP (`GDPC1`), we **flip the sign**
-- This ensures that **positive values of the index imply above-average economic activity**, and vice versa
-
----
-
-### 📈 Interpretation
-
-The resulting **Business Conditions Index (BCI)**:
-- Is centered around 0
-- Moves up during expansions and down during recessions
-- Can be interpreted similarly to the Chicago Fed’s [CFNAI](https://www.chicagofed.org/research/data/cfnai/current-data)
-
----
-
-### 💡 Academic Background
-
-This technique was taught by **Professor Joshua Chan** (Purdue University) as part of the graduate Machine Learning II course. It is frequently used in empirical macroeconomics to capture the cyclical component of large datasets with a single, interpretable index.
