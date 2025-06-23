@@ -6,7 +6,6 @@
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![Last Commit](https://img.shields.io/github/last-commit/csharpconsultant/business-conditions-index)
 
-
 This project computes a **Business Conditions Index (BCI)** for the U.S. economy using **Principal Component Analysis (PCA)** on macroeconomic indicators from the **FRED-QD** dataset. Inspired by academic and Federal Reserve research, this index provides a transparent, reproducible tool for summarizing the U.S. business cycle from a large number of indicators.
 
 ---
@@ -29,92 +28,67 @@ This project computes a **Business Conditions Index (BCI)** for the U.S. economy
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Deployment
 
-### 1. 🚀 Deployment
+This app is live on **Streamlit Community Cloud**:  
+🌐 [business-conditions-index.streamlit.app](https://business-conditions-index.streamlit.app/)
 
-This app runs on [Streamlit Community Cloud](https://streamlit.io/cloud).
+### ✅ Option 1: Deploy Your Own (Streamlit Cloud)
 
-### ✅ Option 1: Deploy via Streamlit (recommended)
-
-1. Push this repo to GitHub
+1. Fork or clone this repo to your own GitHub
 2. Go to [streamlit.io/cloud](https://streamlit.io/cloud) and click **“New App”**
-3. Select:
-   - Repository: `csharpconsultant/business-conditions-index`
-   - Branch: `main`
-   - File: `bci.py`
-4. Streamlit will automatically detect the `environment.yml` and install dependencies.
+3. Configure the deployment:
+   - **Repository:** `your-username/business-conditions-index`
+   - **Branch:** `main`
+   - **Main file:** `bci.py`
+4. Streamlit automatically uses the `environment.yml` file to install dependencies.
 
-### 💻 Option 2: Run locally
+---
 
-If you'd like to run the app on your machine:
+### 💻 Option 2: Run Locally
+
+Clone the repo and run locally using either Conda or pip.
+
+**Using Conda**:
 
 ```bash
-git clone https://github.com/csharpconsultant/business-conditions-index.git
-cd business-conditions-index
 conda env create -f environment.yml
 conda activate bci_env
-streamlit run bci.py
+```
 
-### 2. Prepare your data
+**Using pip** (fallback):
+
+```bash
+pip install -r requirements.txt
+```
+
+### 🗂️ Prepare Your Data
 
 Ensure these files are in your working directory (or generate them using `stationarize_fred_qd.py`):
 
 - `fred_qd_cached.csv`
 - `fred_qd_transformation.csv`
 
-### 3. Launch the app
+### 🚀 Launch the App
 
 ```bash
 streamlit run bci.py
 ```
 
----
+### 🧬 Clone the Repository
 
-## 📁 File Structure
+If you haven't already:
 
+```bash
+git clone https://github.com/csharpconsultant/business-conditions-index.git
+cd business-conditions-index
 ```
-.
-├── bci.py                  # Main Streamlit app
-├── stationarize_fred_qd.py     # Data transformation utility
-├── fred_qd_cached.csv          # Transformed macroeconomic data
-├── fred_qd_transformation.csv  # Variable transformation mapping
-├── environment.yml                   # environment specification
-├── README.md                   # This file
-```
-
----
-
-## 🧾 Variables Used in the BCI
-
-| Variable     | Description                                           |
-|--------------|-------------------------------------------------------|
-| `GDPC1`      | Real Gross Domestic Product (Chained 2012 Dollars)    |
-| `PCECC96`    | Real Personal Consumption Expenditures                |
-| `PCDGx`      | Real PCE: Durable Goods                               |
-| `PCNDx`      | Real PCE: Nondurable Goods                            |
-| `PCESVx`     | Real PCE: Services                                    |
-| `INDPRO`     | Industrial Production Index                           |
-| `PAYEMS`     | Total Nonfarm Payrolls                                |
-| `HOUST`      | Housing Starts: Total New Privately Owned             |
-| `PERMIT`     | New Private Housing Permits                           |
-| `RETAILx`    | Real Retail and Food Services Sales (excl. autos)     |
-| `UNRATE`     | Civilian Unemployment Rate                            |
-| `CPIAUCSL`   | Consumer Price Index (All Urban Consumers)            |
-| `FEDFUNDS`   | Effective Federal Funds Rate                          |
-| `GS10`       | 10-Year Treasury Constant Maturity Rate               |
-| `M2SL`       | M2 Money Stock (NSA)                                  |
-| `BUSLOANS`   | Commercial and Industrial Loans                       |
-| `RECPROUSM156N` | NBER Recession Probabilities (Smoothed)            |
-| `CLAIMSx`    | Initial Unemployment Claims                           |
-| `CE16OV`     | Civilian Employment Level (Age 16+)                   |
-| `AWHMAN`     | Average Weekly Hours: Manufacturing                   |
 
 ---
 
 ## 📦 Dependencies
 
-Managed via `conda.txt`. Key packages include:
+Managed via `environment.yml`. Key packages include:
 
 - `streamlit`
 - `altair`
@@ -148,5 +122,5 @@ Special thanks to:
 
 ## 🔗 Connect
 
-Created by Tony Vuolo 
-Let’s connect on [LinkedIn](https://www.linkedin.com/in/tonyvuolo/)
+Created by Anthony Vuolo  
+Let’s connect on [LinkedIn](https://www.linkedin.com)
